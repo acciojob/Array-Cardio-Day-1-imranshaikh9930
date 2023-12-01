@@ -1,7 +1,3 @@
-// Get your shorts on - this is an array workout!
-// ## Array Cardio Day 1
-
-// Some data we can work with
 
 const inventors = [
     { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
@@ -30,19 +26,25 @@ const people = [
 // 1. Filter the list of inventors for those who were born in the 1500's and return the filtered array
 export function myfilter() {
 
+    const inventors1500s = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
+    return inventors1500s;
+
 }
 
 // Array.prototype.map()
 // 2. Give us an array of the inventor first and last names (i.e. full name)
 // Ex: For the first inventor the full name will be 'Albert Einstein'
 export function map() {
-
+    const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+    return fullNames;
 }
 
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest and return the sorted array
 export function sort() {
+    const sortedInventors = inventors.sort((a, b) => a.year - b.year);
+    return sortedInventors;
 
 }
 
@@ -51,18 +53,25 @@ export function sort() {
 // 4. How many years did all the inventors live?
 // Return the total number of years all the inventors lived
 export function reduce() {
-
+    const totalYears = inventors.reduce((sum, inventor) => sum + (inventor.passed - inventor.year), 0);
+    return totalYears;
 }
 
 // 5. Sort the inventors by years lived and return the sorted array
 export function sortbylived() {
-
+    const sortedByYearsLived = inventors.sort((a, b) => (a.passed - a.year) - (b.passed - b.year));
+    return sortedByYearsLived;
 }
 
 // 6. sort Exercise
 // Sort the people alphabetically by last name and return the sorted array
 export function sortByLastName() {
-
+    const sortedPeople = people.sort((a, b) => {
+        const [aLast] = a.split(', ');
+        const [bLast] = b.split(', ');
+        return aLast.localeCompare(bLast);
+    });
+    return sortedPeople;
 }
 
 // 7. Reduce Exercise
@@ -71,4 +80,10 @@ const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bik
 
 export function reducedSum() {
     // Return an object containing transports as key and its number of occurances as the key's value
+    const sortedPeople = people.sort((a, b) => {
+        const [aLast] = a.split(', ');
+        const [bLast] = b.split(', ');
+        return aLast.localeCompare(bLast);
+    });
+    return sortedPeople;
 }
