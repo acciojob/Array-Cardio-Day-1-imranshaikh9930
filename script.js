@@ -58,32 +58,31 @@ export function reduce() {
 }
 
 // 5. Sort the inventors by years lived and return the sorted array
-export function sortbylived() {
-    const sortedByYearsLived = inventors.sort((a, b) => (a.passed - a.year) - (b.passed - b.year));
-    return sortedByYearsLived;
+export function sortByLived() {
+    return [...inventors].sort((a, b) => {
+        const yearsLivedA = a.passed - a.year;
+        const yearsLivedB = b.passed - b.year;
+        return yearsLivedA - yearsLivedB;
+    });
 }
+
 
 // 6. sort Exercise
 // Sort the people alphabetically by last name and return the sorted array
 export function sortByLastName() {
-  const sortedPeople = people.sort((a, b) => {
-    const [aLast] = a.split(', ').map(name => name.trim().toLowerCase());
-    const [bLast] = b.split(', ').map(name => name.trim().toLowerCase());
+  return [...people].sort((a, b) => {
+    const aLast = a.split(', ')[0].trim().toLowerCase();
+    const bLast = b.split(', ')[0].trim().toLowerCase();
     return aLast.localeCompare(bLast);
   });
-  return sortedPeople;
 }
 
 // 7. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
-
 export function reducedSum() {
-    // Return an object containing transports as key and its number of occurances as the key's value
-    const sortedPeople = people.sort((a, b) => {
-        const [aLast] = a.split(', ');
-        const [bLast] = b.split(', ');
-        return aLast.localeCompare(bLast);
-    });
-    return sortedPeople;
+    return data.reduce((acc, item) => {
+        acc[item] = (acc[item] || 0) + 1;
+        return acc;
+    }, {});
 }
