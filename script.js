@@ -58,7 +58,7 @@ export function reduce() {
 }
 
 // 5. Sort the inventors by years lived and return the sorted array
-export function sortByLived() {
+export function sortbylived() { // lowercase function name
     return [...inventors].sort((a, b) => {
         const yearsLivedA = a.passed - a.year;
         const yearsLivedB = b.passed - b.year;
@@ -67,15 +67,17 @@ export function sortByLived() {
 }
 
 
+
 // 6. sort Exercise
 // Sort the people alphabetically by last name and return the sorted array
 export function sortByLastName() {
   return [...people].sort((a, b) => {
-    const aLast = a.split(', ')[0].trim().toLowerCase();
-    const bLast = b.split(', ')[0].trim().toLowerCase();
-    return aLast.localeCompare(bLast);
+    const aLast = a.split(', ')[0].trim(); // Remove .toLowerCase()
+    const bLast = b.split(', ')[0].trim();
+    return aLast.localeCompare(bLast); // Default localeCompare is case-sensitive
   });
 }
+
 
 // 7. Reduce Exercise
 // Sum up the instances of each of these
